@@ -57,7 +57,6 @@ class _SignUpPageState extends State<SignUpPage> {
               KFlatButton(
                   label: 'google sign in',
                   onTap: () {
-                    print('Please Enter your Email Id');
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text('Please Enter your Email Id')));
                   }),

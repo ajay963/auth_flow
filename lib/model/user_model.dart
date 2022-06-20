@@ -1,8 +1,12 @@
 class UserData {
   final String uid;
   final String email;
+  final String imageUrl;
+  final int phoneNo;
 
-  UserData({
+  UserData(
+    this.imageUrl,
+    this.phoneNo, {
     required this.uid,
     required this.email,
   });

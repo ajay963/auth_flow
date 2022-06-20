@@ -88,7 +88,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         } else {
                           authService.signUp(
                               email: emailCtr.text.trim(),
-                              password: psdCtr.text.trim());
+                              password: psdCtr.text.trim(),
+                              context: context);
                           Navigator.pop(context);
                         }
                       },

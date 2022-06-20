@@ -6,16 +6,28 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:provider/provider.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
   const LogInPage({Key? key}) : super(key: key);
+
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  TextEditingController emailCtr = TextEditingController();
+  TextEditingController psdCtr = TextEditingController();
+  @override
+  void dispose() {
+    emailCtr.dispose();
+    psdCtr.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<Authentication>(context);
     final TextTheme txtTheme = Theme.of(context).textTheme;
     final double height = MediaQuery.of(context).size.height;
-    TextEditingController emailCtr = TextEditingController();
-    TextEditingController psdCtr = TextEditingController();
 
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -44,7 +56,9 @@ class LogInPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const SignUpPage())),
             ),
             SizedBox(height: height * 0.04),
-            KFlatButton(label: 'google sign in', onTap: () {}),
+            KFlatButton(
+                label: 'google sign in',
+                onTap: () => authService.googleSignIn(context: context)),
             SizedBox(height: height * 0.1),
             Center(
                 child: CircularButton(
@@ -60,7 +74,8 @@ class LogInPage extends StatelessWidget {
                       } else {
                         authService.signIn(
                             email: emailCtr.text.trim(),
-                            password: psdCtr.text.trim());
+                            password: psdCtr.text.trim(),
+                            context: context);
                       }
                     },
                     icon: LineIcons.arrowRight,

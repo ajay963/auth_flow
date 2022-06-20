@@ -1,3 +1,4 @@
+import 'package:auth_flow/services/firestore_services.dart';
 import 'package:auth_flow/widgets/buttons.dart';
 import 'package:auth_flow/widgets/textfield.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,11 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController nameCtr = TextEditingController();
   TextEditingController psdCtr = TextEditingController();
   TextEditingController cfrmPsdCtr = TextEditingController();
+  TextEditingController phoneNoCtr = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<Authentication>(context);
-
+    final firestoreServices = FirestoreServices();
     final TextTheme txtTheme = Theme.of(context).textTheme;
     final double height = MediaQuery.of(context).size.height;
 
@@ -44,6 +46,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   hideText: false,
                   iconData: LineIcons.user,
                   controller: nameCtr),
+              SizedBox(height: height * 0.04),
+              KTextField(
+                  label: 'PHONE NO',
+                  hideText: false,
+                  iconData: LineIcons.phone,
+                  controller: phoneNoCtr),
               SizedBox(height: height * 0.04),
               KTextField(
                   label: 'PASSWORD',
@@ -90,6 +98,12 @@ class _SignUpPageState extends State<SignUpPage> {
                               email: emailCtr.text.trim(),
                               password: psdCtr.text.trim(),
                               context: context);
+                          firestoreServices.addUserInfo(
+                              uid: '',
+                              imageUrl: '',
+                              email: emailCtr.text.trim(),
+                              name: nameCtr.text.trim(),
+                              phoneNo: int.parse(phoneNoCtr.text));
                           Navigator.pop(context);
                         }
                       },

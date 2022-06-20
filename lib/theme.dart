@@ -24,7 +24,7 @@ class AppThemes {
       bodyLarge: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,
           fontStyle: GoogleFonts.roboto().fontStyle,
-          fontSize: 20,
+          fontSize: 16,
           color: const Color(0xff1b1b1b)),
       bodyMedium: TextStyle(
           fontFamily: GoogleFonts.roboto().fontFamily,

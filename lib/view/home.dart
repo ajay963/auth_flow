@@ -52,17 +52,17 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: height * 0.04),
             Text(
-              _userData?.email ?? 'data not available',
+              _userData!.email,
               style: txtTheme.bodyLarge,
             ),
             SizedBox(height: height * 0.04),
             Text(
-              _userData?.phoneNo.toString() ?? 'data not available',
+              _userData!.phoneNo.toString(),
               style: txtTheme.bodyLarge,
             ),
             SizedBox(height: height * 0.04),
             Text(
-              _userData?.name ?? 'data not available',
+              _userData!.name,
               style: txtTheme.bodyLarge,
             ),
             SizedBox(height: height * 0.2),

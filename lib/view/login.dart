@@ -1,14 +1,17 @@
+import 'package:auth_flow/services/auth_services.dart';
 import 'package:auth_flow/view/signup.dart';
 import 'package:auth_flow/widgets/buttons.dart';
 import 'package:auth_flow/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
 
 class LogInPage extends StatelessWidget {
   const LogInPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<Authentication>(context);
     final TextTheme txtTheme = Theme.of(context).textTheme;
     final double height = MediaQuery.of(context).size.height;
     TextEditingController emailCtr = TextEditingController();
@@ -54,6 +57,10 @@ class LogInPage extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                                 content: Text('Please Enter Password')));
+                      } else {
+                        authService.signIn(
+                            email: emailCtr.text.trim(),
+                            password: psdCtr.text.trim());
                       }
                     },
                     icon: LineIcons.arrowRight,

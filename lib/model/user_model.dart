@@ -1,12 +1,9 @@
-class User {
+class UserData {
   final String uid;
   final String email;
-  final String name;
-  final int phoneNumber;
-  User({
+
+  UserData({
     required this.uid,
     required this.email,
-    required this.name,
-    required this.phoneNumber,
   });
 }

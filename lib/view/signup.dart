@@ -2,6 +2,9 @@ import 'package:auth_flow/widgets/buttons.dart';
 import 'package:auth_flow/widgets/textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:provider/provider.dart';
+
+import '../services/auth_services.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -17,6 +20,8 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController cfrmPsdCtr = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<Authentication>(context);
+
     final TextTheme txtTheme = Theme.of(context).textTheme;
     final double height = MediaQuery.of(context).size.height;
 
@@ -81,6 +86,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               const SnackBar(
                                   content: Text('Password are not Matching')));
                         } else {
+                          authService.signUp(
+                              email: emailCtr.text.trim(),
+                              password: psdCtr.text.trim());
                           Navigator.pop(context);
                         }
                       },

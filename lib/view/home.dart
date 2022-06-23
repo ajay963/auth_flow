@@ -1,6 +1,5 @@
 import 'package:auth_flow/model/user_model.dart';
 import 'package:auth_flow/services/firestore_services.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:line_icons/line_icons.dart';

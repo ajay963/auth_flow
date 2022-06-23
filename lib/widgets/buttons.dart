@@ -1,5 +1,6 @@
 import 'package:auth_flow/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 class CircularButton extends StatelessWidget {
   final IconData icon;
@@ -56,6 +57,28 @@ class KFlatButton extends StatelessWidget {
             style: txtTheme.bodyMedium,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class AddImageButton extends StatelessWidget {
+  final Function() onTap;
+  const AddImageButton({Key? key, required this.onTap}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final TextTheme txtTheme = Theme.of(context).textTheme;
+
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text('Add Image', style: txtTheme.bodySmall),
+          const SizedBox(width: 20),
+          CircularButton(icon: LineIcons.plus, radius: 30, onTap: onTap)
+        ],
       ),
     );
   }
